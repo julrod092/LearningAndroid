@@ -41,6 +41,10 @@ public class DetailActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
+            Intent settings = new Intent(getApplicationContext(), SettingsActivity.class);
+            startActivity(settings);
+            CharSequence text = "Hello toast!";
             return true;
         }
 
