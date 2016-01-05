@@ -1,13 +1,16 @@
 package com.example.android.sunshine.app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class DetailActivity extends ActionBarActivity {
 
@@ -21,7 +24,6 @@ public class DetailActivity extends ActionBarActivity {
                     .commit();
         }
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -50,6 +52,8 @@ public class DetailActivity extends ActionBarActivity {
      */
     public static class PlaceholderFragment extends Fragment {
 
+        private final String LOG_TAG = PlaceholderFragment.class.getSimpleName();
+
         public PlaceholderFragment() {
         }
 
@@ -58,6 +62,13 @@ public class DetailActivity extends ActionBarActivity {
                                  Bundle savedInstanceState) {
 
             View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
+            Intent intent = getActivity().getIntent();
+            if (intent != null && intent.hasExtra(intent.EXTRA_TEXT)) {
+                String forecast = intent.getStringExtra(intent.EXTRA_TEXT);
+                Log.v(LOG_TAG, "Intent: " + forecast);
+                ((TextView) rootView.findViewById(R.id.description)).setText(forecast);
+            }
+
             return rootView;
         }
     }

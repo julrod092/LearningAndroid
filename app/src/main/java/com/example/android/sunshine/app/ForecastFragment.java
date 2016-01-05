@@ -1,5 +1,6 @@
 package com.example.android.sunshine.app;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -15,7 +16,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -84,11 +84,17 @@ public class ForecastFragment extends Fragment {
 
         ListView listViewForecast = (ListView) rootView.findViewById(R.id.listView_forecast);
         listViewForecast.setAdapter(arrayAdapter);
+
+        /**
+         * Creation of an event listener when a one item of forecastEntry is clicked
+         */
         listViewForecast.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String text = arrayAdapter.getItem(i);
-                Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show();
+                Intent detailActivityIntent = new Intent(getActivity(), DetailActivity.class)
+                        .putExtra(Intent.EXTRA_TEXT, text);
+                startActivity(detailActivityIntent);
             }
         });
 
@@ -217,10 +223,6 @@ public class ForecastFragment extends Fragment {
             final String APPID_PARAM = "APPID";
 
             try {
-
-                /*String baseUrl = "http://api.openweathermap.org/data/2.5/forecast/daily?q=94043&mode=json&units=metric&cnt=7";
-                String apiKey = "&APPID=21f36056b0596e54bfc2970b5392bb4c";*/
-
 
                 Uri uriBilder = Uri.parse(FINAL_URL).buildUpon()
                         .appendQueryParameter(QUERY_PARAM, params[0])
