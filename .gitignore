@@ -2,3 +2,8 @@ build/
 .DS_Store
 LICENSE
 Sunshine-Version-2.iml
+.idea/
+.gradle/
+SunshineApp2.iml
+app/app.iml
+

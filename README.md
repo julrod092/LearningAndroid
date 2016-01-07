@@ -1,3 +1,1 @@
-Udacity course [Developing Android Apps: Android Fundamentals](https://www.udacity.com/course/ud853).
-
-
+Udacity course Developing Android Apps: Android Fundamentals./knowlabs.com/document/d/193xJb_OpcNCqgquMhxPrMh05IEYFXQqt0S6-6YK8gBw/pub).
